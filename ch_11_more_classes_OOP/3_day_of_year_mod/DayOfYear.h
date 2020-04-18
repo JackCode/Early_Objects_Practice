@@ -1,0 +1,26 @@
+#ifndef DAY_OF_YEAR_H
+#define DA_OF_YEAR_H
+
+#include <string>
+using namespace std;
+
+class DayOfYear {
+
+    private:
+
+        int day;
+        static string months[];
+        static int daysPerMonth[];
+
+    public:
+
+        DayOfYear(int day);
+        DayOfYear(string month, int day);
+        DayOfYear operator++();
+        DayOfYear operator++(int);
+        void print();
+
+};
+
+
+#endif
