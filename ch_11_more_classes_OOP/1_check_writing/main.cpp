@@ -16,7 +16,7 @@ int main() {
     ptr->print();
     cout << endl << endl;
 
-    delete ptr;;
+    delete ptr;
 
     return 0;
 }
