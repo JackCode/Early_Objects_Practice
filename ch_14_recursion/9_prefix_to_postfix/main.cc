@@ -1,4 +1,4 @@
-// Issues cause core dumb when spacing is wrong. Maybe fix one day.
+// Issues cause core dump when spacing is wrong. Maybe fix one day.
 #include <sstream>
 #include <iostream>
 #include <string>
