@@ -1,4 +1,3 @@
-// NEEDS A DESTRUCTOR
 #ifndef LINKED_LIST_H_
 #define LINKED_LIST_H_
 
@@ -16,11 +15,12 @@ class LinkedList {
  public:
   LinkedList();
   LinkedList(const LinkedList&);
+  ~LinkedList();
   void add(double x);
   bool isMember(double x);
 
  private:
-  ListNode *head;
+  ListNode* head;
 };
 
 #endif
