@@ -14,11 +14,12 @@ struct ListNode {
 class LinkedList {
  public:
   LinkedList();
+  ~LinkedList();
   void add(double x);
   bool isMember(double x);
 
  private:
-  ListNode *head;
+  ListNode* head;
 };
 
 #endif
