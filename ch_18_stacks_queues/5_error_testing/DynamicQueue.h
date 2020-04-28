@@ -1,0 +1,101 @@
+#ifndef DYNAMIC_QUEUE_H_
+#define DYNAMIC_QUEUE_H_
+
+#include <new>
+
+template <class T>
+class DynamicQueue {
+ public:
+  DynamicQueue();
+  ~DynamicQueue();
+
+  void enqueue(T value);
+  void dequeue(T &value);
+  bool isEmpty();
+  void clear();
+
+  class Underflow {};
+  class EnqueueMemErr {};
+
+ private:
+  class QueueNode {
+    friend class DynamicQueue;
+    T value;
+    QueueNode* next;
+
+    // Node Constructor
+    QueueNode(T newValue, QueueNode* newNext = nullptr) {
+      value = newValue;
+      next = newNext;
+    }
+  }; 
+  QueueNode* front;
+  QueueNode* rear;
+};
+
+// Constructor
+template <class T>
+DynamicQueue<T>::DynamicQueue() {
+  front = nullptr;
+  rear = nullptr;
+}
+
+// Destructor
+template <class T>
+DynamicQueue<T>::~DynamicQueue() {
+  clear();
+}
+
+// Enqueue
+template <class T>
+void DynamicQueue<T>::enqueue(T value) {
+  if (isEmpty()) {
+    try {
+      front = new QueueNode(value);
+      rear = front;
+    } catch (bad_alloc) {
+      throw EnqueueMemErr();
+    }
+  } else {
+    try {
+      rear->next = new QueueNode(value);
+      rear = rear->next;
+    } catch (bad_alloc) {
+      throw EnqueueMemErr();
+    }
+  }
+}
+
+// Dequeue
+template <class T>
+void DynamicQueue<T>::dequeue(T &value) {
+  if (ifEmpty()) {
+    throw Underflow();
+  } else {
+    QueueNode* garbage;
+    value = front->value;
+    garbage = front;
+    front = front->next;
+    delete garbage;
+  }
+}
+
+// Check is queue is empty
+template <class T>
+bool DynamicQueue<T>::isEmpty() {
+  if (front == nullptr)
+    return true;
+  else 
+    return false;
+}
+
+// Clear queue
+template <class T>
+void DynamicQueue<T>::clear() {
+  T value;
+
+  while (!isEmpty)
+    dequeue(value);
+}
+
+#endif
