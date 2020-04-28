@@ -1,5 +1,5 @@
-#ifndef STATIS_QUEUE_H_
-#define STATIS_QUEUE_H_
+#ifndef STATIC_QUEUE_H_
+#define STATIC_QUEUE_H_
 
 template <class T>
 class StaticQueue {
