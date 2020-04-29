@@ -25,7 +25,7 @@ jw::BinaryTree::~BinaryTree() {
 
 }
 
-// Insert new node into tree -- This code is a mess.
+// Insert new node into tree
 void jw::BinaryTree::insert(double value) {
   int level = 0; // Used to update levelSize vector
 
